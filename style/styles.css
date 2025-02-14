@@ -1,0 +1,113 @@
+:root {
+		  --primary-color: #11121a;
+		  --hover-color: #272832;
+		  --accent-color: #0071ff;
+		  --text-color: #c9c9c9;
+		}
+		*{
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		html {
+			font-family: "Poppins", serif;
+			color: var(--text-color);
+		}
+		body {
+			background-color: var(--primary-color);
+		}
+		.container {
+			display: flex;
+			max-width: 1200px;
+			margin: 0 auto;
+			align-items: center;
+			justify-content: space-between;
+		}
+		header{
+			background-color: var(--primary-color);
+			border-bottom: 1px solid var(--hover-color);
+		}
+		.navbar {
+			background-color: var(--primary-color);
+		}
+		.navbar ul {
+			display: flex;
+			list-style: none;
+		}
+		.navbar ul li {
+			display: flex;
+		}
+		.navbar ul li a {
+			display: flex;
+			text-decoration: none;
+			color: var(--text-color);
+			padding: 1em 2em;
+			transition: background-color 150ms ease;
+		}
+		.navbar ul li a:hover {
+			background-color: var(--hover-color); 
+		} 
+		nav a.active-link {
+			border-bottom: 2px solid var(--text-color);
+		}
+		nav a.accent-link {
+			background-color: var(--accent-color);
+		}
+		#open-sidebar i, #close-sidebar i {
+			font-size: 2rem;	
+			display: none;
+			cursor: pointer;
+		}
+		#close-sidebar i {
+			padding: 1em;
+		}
+		#overlay {
+			position: fixed;
+			background-color: rgba(0, 0, 0, 0.5);
+			inset: 0;
+			z-index: 9;
+			display: none;
+		}
+		
+		@media (max-width: 767px) {
+			header {
+				border-bottom: none;
+			}
+			.navbar {
+				position: fixed;
+				top: 0;
+				right: -100%;
+				height: 100vh;
+				width: min(15em, 100%);
+				z-index: 10;
+				border-left: 1px solid var(--hover-color);
+				transition: right 300ms ease-out;
+				z-index: 10;
+			}
+			.navbar.show {
+				right: 0;
+			}
+			.navbar.show ~ #overlay {
+				display: block;
+			}
+			.navbar ul {
+				width: 100%;
+				flex-direction: column;
+			}
+			.navbar ul li a {
+				width: 100%;
+				padding-left: 2.5em;
+			}
+			nav a.active-link {
+				border-bottom: none;
+			}
+			#open-sidebar i, #close-sidebar i {
+				display: block;
+			}	
+		}
+		
+		@media (max-width: 567px) {
+			.navbar {
+				width: 70%;
+			}
+		}
